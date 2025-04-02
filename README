@@ -1,0 +1,11 @@
+Process
+1. Compile file "gcc -o webp_decoder webp_decoder.c -lwebp"
+2. Run file using GDB "gdb webp_decoder"
+3. Place breakpoints before core functions "b BuildHuffmanTable"
+4. Run with libwebp file (malicious/harmless) "r file.libwebp"
+5. Inspect memory before & after decoding "info registers OR x/64xb $sp OR x/64xb $bp OR x/64xb buf"
+6. Analyse overwritten variables/control structures (e.g. return addresses)
+7. 
+
+TODO List
+1. Create malicious WebP File
