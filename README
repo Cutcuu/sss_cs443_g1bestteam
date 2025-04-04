@@ -1,10 +1,11 @@
 Process
-1. Compile file "gcc -o webp_decoder webp_decoder.c -lwebp"
-2. Run file using GDB "gdb webp_decoder"
-3. Place breakpoints before core functions "b BuildHuffmanTable"
-4. Run with libwebp file (malicious/harmless) "r file.libwebp"
-5. Inspect memory before & after decoding "info registers OR x/64xb $sp OR x/64xb $bp OR x/64xb buf"
-6. Analyse overwritten variables/control structures (e.g. return addresses)
+1. Clone libwebp submodule "git submodule update --init --recursive"
+2. Compile file "gcc -o webp_decoder webp_decoder.c -lwebp"
+3. Run file using GDB "gdb webp_decoder"
+4. Place breakpoints before core functions "b BuildHuffmanTable"
+5. Run with libwebp file (malicious/harmless) "r file.libwebp"
+6. Inspect memory before & after decoding "info registers OR x/64xb $sp OR x/64xb $bp OR x/64xb buf"
+7. Analyse overwritten variables/control structures (e.g. return addresses)
 7. 
 
 TODO List
