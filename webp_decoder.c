@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     uint8_t *output;
     WebPDecoderConfig config;
     WebPInitDecoderConfig(&config);
-    fprintf(stdout, "Attempting to decode image file "+argv[1]+"...");
+    fprintf(stdout, "Attempting to decode image file %s...\n", argv[1]);
     WebPGetFeatures(data, size, &config.input);
     output = WebPDecodeRGBA(data, size, NULL, NULL);
     fprintf(stdout, "Image successfully decoded!");
