@@ -21,12 +21,14 @@ int main(int argc, char *argv[]) {
     fread(data, 1, size, file);
     fclose(file);
 
-    // Decode the malicious WebP image
+    // Decode WebP Image
     uint8_t *output;
     WebPDecoderConfig config;
     WebPInitDecoderConfig(&config);
+    fprintf(stdout, "Attempting to decode image file "+argv[1]+"...");
     WebPGetFeatures(data, size, &config.input);
     output = WebPDecodeRGBA(data, size, NULL, NULL);
+    fprintf(stdout, "Image successfully decoded!");
     free(data);
     free(output);
     return 0;

@@ -1,12 +1,56 @@
-Process
-1. Clone libwebp submodule "git submodule update --init --recursive"
-2. Compile file "gcc -o webp_decoder webp_decoder.c -lwebp"
-3. Run file using GDB "gdb webp_decoder"
-4. Place breakpoints before core functions "b BuildHuffmanTable"
-5. Run with libwebp file (malicious/harmless) "r file.libwebp"
-6. Inspect memory before & after decoding "info registers OR x/64xb $sp OR x/64xb $bp OR x/64xb buf"
-7. Analyse overwritten variables/control structures (e.g. return addresses)
-7. 
+### Process
+## Setting Up Libwebp
+1. Clone libwebp submodule 
+``` bash
+git submodule update --init --recursive
+```
+2. Ensure correct branch (v1.3.1)
+``` bash
+cd libwebp
+git branch # check if v1.3.1 branch exists & '*' next to it
+git checkout v1.3.1 # only if the above does not fit
+```
+3. Download dependencies for libwebp build
+``` bash
+sudo apt update
+sudo apt install build-essential cmake ninja-build
+```
+4. Build libwebp
+``` bash
+mkdir build # ensure your current directory is 'libwebp'
+cd build
+cmake .. -G "Ninja"
+ninja
+./cwebp -version # should be 1.3.1
+```
+5. Install it system wide
+``` bash
+sudo ninja install
+```
 
-TODO List
+## Building LibWebP Utiliser
+1. Compile file 
+``` bash 
+gcc -o webp_decoder webp_decoder.c -lwebp
+```
+2. Run file using GDB 
+``` bash
+gdb webp_decoder
+```
+3. Place breakpoints before core functions
+``` bash
+b BuildHuffmanTable
+```
+4. Run with libwebp file (malicious/harmless) 
+``` bash
+r file.libwebp
+```
+5. Inspect memory before & after decoding
+``` bash
+info registers OR x/64xb $sp OR x/64xb $bp OR x/64xb buf # haven't tried yet
+```
+6. Analyse overwritten variables/control structures (e.g. return addresses)
+ 
+
+# TODO List
 1. Create malicious WebP File
