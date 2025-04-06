@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     fprintf(stdout, "Attempting to decode image file %s...\n", argv[1]);
     WebPGetFeatures(data, size, &config.input);
     output = WebPDecodeRGBA(data, size, NULL, NULL);
-    fprintf(stdout, "Image successfully decoded!");
+    fprintf(stdout, "Image successfully decoded!\n");
     free(data);
     free(output);
     return 0;
