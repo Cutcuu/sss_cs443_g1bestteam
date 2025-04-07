@@ -39,7 +39,7 @@ gdb webp_decoder
 ```
 3. Place breakpoints before core functions
 ``` bash
-b BuildHuffmanTable
+b 28 && b 29 && b32
 ```
 4. Run with libwebp file (malicious/harmless) 
 ``` bash
